@@ -52,9 +52,7 @@ table#candidates { width: 100%; border-collapse: collapse; }
 
 table#candidates tr th, table#candidates tr td { text-align: left; padding: 5px; }
 
-table#candidates tr td { width: 400px; }
-
-table#candidates tr td .bar { height: 20px; background-color: #396E2F; }
+table#candidates tr td .bar { height: 20px; background-color: #396E2F; color: white; padding: 3px; }
 
 #footer {
   font-size: 10px;

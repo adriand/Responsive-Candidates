@@ -17,15 +17,18 @@ function displayResults(question_count, candidates) {
   
   for (var j = 0; j < candidates.length; j++) {
     var width = ((candidates[j].responses / question_count) * 100) + "%";
-    if (width == "0%") width = "1%"; // token line
+    if (width == "0%") width = "1.5%"; // token line
     $("#candidates")
       .append(
         $("<tr>")
         .append(
-          $("<th>").append($("<h3>").html("<a href='" + apiURLtoPublicURL(candidates[j].url) + "'>" + candidates[j].name + "</a> (" + candidates[j].responses + ")"))
+          $("<th>").append($("<h3>").html("<a href='" + apiURLtoPublicURL(candidates[j].url) + "'>" + candidates[j].name + "</a>"))
         )
+				.append(
+					$("<td>").html(candidates[j].ward)
+				)
         .append(
-          $("<td>").append($("<div class='bar'>").css("width", width))
+          $("<td>").append($("<div class='bar'>").css("width", width).html(candidates[j].responses))
         )
       );      
   }  
@@ -42,7 +45,12 @@ $(function() {
     
     for (var i = 0; i < raw_candidates.length; i++) {
       $.getJSON("api.php?q=" + stripRoot(raw_candidates[i].url), function(candidate) {
-        candidates.push({name: candidate.details.name, responses: candidate.responses.length, url: candidate.details.url});
+        candidates.push({
+					name: candidate.details.name, 
+					responses: candidate.responses.length, 
+					url: candidate.details.url,
+					ward: candidate.details.ward
+				});
         if (candidates.length == raw_candidates.length) {
           displayResults(question_count, candidates);
         }
