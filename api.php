@@ -17,12 +17,12 @@
   function getAndCache($request) {
     $cached_file = sha1($request . SECRET_KEY);
     // if a cached request exists on disk and it is newer than 30 minutes, use it
-    if (file_exists(getcwd() . "/cache/" . $cached_file) && fileAgeInMinutes(getcwd() . "/cache/" . $cached_file) < 30) {
-      $response = file_get_contents(getcwd() . "/cache/" . $cached_file);
+    if (file_exists("cache/" . $cached_file) && fileAgeInMinutes("cache/" . $cached_file) < 30) {
+      $response = file_get_contents("cache/" . $cached_file);
     } else {
       $response = file_get_contents("http://elections.raisethehammer.org/api" . $request);
       // write the response to the cache
-      $handle = fopen(getcwd() . "/cache/" . $cached_file, "w");
+      $handle = fopen("cache/" . $cached_file, "w");
       fwrite($handle, $response);
       fclose($handle);
     }
