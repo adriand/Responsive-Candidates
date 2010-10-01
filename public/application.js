@@ -2,6 +2,12 @@ function stripRoot(url) {
   return url.replace("http://elections.raisethehammer.org/api", "")
 }
 
+// from "http://elections.raisethehammer.org/api/candidate/70/1" to 
+// "http://elections.raisethehammer.org/candidate/70/1"
+function apiURLtoPublicURL(url) {
+	return url.replace("api/", "");
+}
+
 function displayResults(question_count, candidates) {
   $("#question_count").html(question_count);
 
@@ -16,7 +22,7 @@ function displayResults(question_count, candidates) {
       .append(
         $("<tr>")
         .append(
-          $("<th>").append($("<h3>").html(candidates[j].name + " (" + candidates[j].responses + ")"))
+          $("<th>").append($("<h3>").html("<a href='" + apiURLtoPublicURL(candidates[j].url) + "'>" + candidates[j].name + "</a> (" + candidates[j].responses + ")"))
         )
         .append(
           $("<td>").append($("<div class='bar'>").css("width", width))
@@ -36,7 +42,7 @@ $(function() {
     
     for (var i = 0; i < raw_candidates.length; i++) {
       $.getJSON("api.php?q=" + stripRoot(raw_candidates[i].url), function(candidate) {
-        candidates.push({name: candidate.details.name, responses: candidate.responses.length});
+        candidates.push({name: candidate.details.name, responses: candidate.responses.length, url: candidate.details.url});
         if (candidates.length == raw_candidates.length) {
           displayResults(question_count, candidates);
         }
