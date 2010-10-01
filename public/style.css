@@ -48,11 +48,13 @@ a {
   font-size: 15px;
   line-height: 18px; }
   
-#wards .ward {
-  float: left;
-  padding-top: 50px;
-  width: 305px;
-}
+table#candidates { width: 100%; border-collapse: collapse; }
+
+table#candidates tr th, table#candidates tr td { text-align: left; padding: 5px; }
+
+table#candidates tr td { width: 400px; }
+
+table#candidates tr td .bar { height: 20px; background-color: #5131C9; }
 
 #footer {
   font-size: 10px;
