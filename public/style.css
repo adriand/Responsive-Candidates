@@ -21,13 +21,13 @@ p, h1, h2, h3 {
   width: 0; }
 
 a {
-  color: #5131C9;
+  color: #62B94E;
   font-weight: bold;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
   a:visited {
-    color: #5131C9; }
+    color: #62B94E; }
   a img {
     border: 0px; }
 
@@ -54,7 +54,7 @@ table#candidates tr th, table#candidates tr td { text-align: left; padding: 5px;
 
 table#candidates tr td { width: 400px; }
 
-table#candidates tr td .bar { height: 20px; background-color: #5131C9; }
+table#candidates tr td .bar { height: 20px; background-color: #396E2F; }
 
 #footer {
   font-size: 10px;

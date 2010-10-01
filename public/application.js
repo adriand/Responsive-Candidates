@@ -36,7 +36,7 @@ $(function() {
     
     for (var i = 0; i < raw_candidates.length; i++) {
       $.getJSON("api.php?q=" + stripRoot(raw_candidates[i].url), function(candidate) {
-        candidates.push({name: candidate.details[0].name, responses: candidate.responses.length});
+        candidates.push({name: candidate.details.name, responses: candidate.responses.length});
         if (candidates.length == raw_candidates.length) {
           displayResults(question_count, candidates);
         }
