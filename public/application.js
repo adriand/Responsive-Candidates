@@ -5,7 +5,7 @@ function stripRoot(url) {
 // from "http://elections.raisethehammer.org/api/candidate/70/1" to 
 // "http://elections.raisethehammer.org/candidate/70/1"
 function apiURLtoPublicURL(url) {
-	return url.replace("api/", "");
+  return url.replace("api/", "");
 }
 
 function urlForCandidate(candidate) {
