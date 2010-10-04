@@ -48,11 +48,15 @@ a {
   font-size: 15px;
   line-height: 18px; }
   
-table#candidates { width: 99%; border-collapse: collapse; }
+table { width: 910px; border-collapse: collapse; }
 
-table#candidates tr th, table#candidates tr td { text-align: left; padding: 5px; }
+table tr th, table tr td { text-align: left; padding: 5px; }
 
 table#candidates tr td .bar { height: 16px; background-color: #396E2F; color: white; padding: 3px; }
+
+table.extreme tr th, table.extreme tr td { border-bottom: 1px solid #d9d9d9; }
+table.extreme tr th { width: 120px; font-weight: normal; }
+table.extreme tr td.main { width: 600px; }
 
 #footer {
   font-size: 10px;
@@ -79,16 +83,9 @@ h2 {
   margin: 0px;
   padding: 0px 0px 15px;
   font-weight: normal; }
-
-table { border-collapse: collapse; }
-table tr td, table tr th { padding: 0px; margin: 0px; }
-table tr th { text-align: left; width: 160px; }
-table tr td { width: 110px; }
-table tr.high td { height: 70px; }
-table tr.med td { height: 30px; }
-table tr td { text-align: center; }
-table tr td.sym { font-size: 36px; }
-table tr.dates td { font-weight: bold; padding-bottom: 15px; }
-table tr.dates td, table tr.positions td { font-size: 12px; }
-
-#details { display: none; }
+  
+h3 {
+  font-size: 18px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
