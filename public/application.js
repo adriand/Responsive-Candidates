@@ -29,6 +29,8 @@ function niceName(name) {
 // we are seeking the most or least responsive candidates.
 // returns: an array containing the number of responses that is either most or least
 // for the ward, and the candidates who have that many responses.
+// this could be optimized, since we traverse the entire array of candidates for each ward
+// when that is not really necessary, but speed is not the essential concern here.
 function getResponsiveCandidatesForWard(all_candidates, ward, most) {
   var candidates = [];
   for (var i = 0; i < all_candidates.length; i++) {
@@ -108,6 +110,45 @@ function displayMostAndLeastByWard(candidates, wards, most) {
   }
 }
 
+function displayWardResponsiveness(candidates, wards) {
+  var ward_responsiveness = {};
+  for (var i = 0; i < candidates.length; i++) {
+    var ward = candidates[i].ward;
+    // if we don't have an entry for this ward yet, create one with zeroes
+    // for the number of candidates, and the number of responses
+    if (ward_responsiveness[ward] == undefined) {
+      ward_responsiveness[ward] = [0,0];
+    }
+    ward_responsiveness[ward][0]++;
+    ward_responsiveness[ward][1] += candidates[i].responses;
+  }
+  // build a sortable array with everything in it that we need to show the data
+  var sortable_responsiveness = [];
+  var j = 0;
+  $.each(ward_responsiveness, function(ward, value) {
+    sortable_responsiveness[j] = {
+      ward: ward,
+      responsiveness: (value[1] / value[0]).toFixed(2)
+    }
+    j++;
+  });
+  sortable_responsiveness.sort( function(a,b) {
+    return b.responsiveness - a.responsiveness;
+  });
+  for (var k = 0; k < sortable_responsiveness.length; k++) {
+    $("#ward_responsiveness")
+    .append(
+      $("<tr>")
+      .append(
+        $("<th>").html(sortable_responsiveness[k].ward)
+      )
+      .append(
+        $("<td>").html(sortable_responsiveness[k].responsiveness)
+      )
+    )    
+  }
+}
+
 $(function() {
   $('#content').corner("12px");
   $.getJSON("api.php?q=/election/1", function(data) {
@@ -125,10 +166,14 @@ $(function() {
           url: candidate.details.url,
           ward: candidate.details.ward
 				});
+				// when we have data on all of the candidates, generate the data displays
         if (candidates.length == raw_candidates.length) {
           displayResponsesByCandidate(question_count, candidates);
           displayMostAndLeastByWard(candidates, data.wards, true);
           displayMostAndLeastByWard(candidates, data.wards, false);
+          displayWardResponsiveness(candidates, data.wards);
+          $("#loading").hide();
+          $("#data").slideDown("slow");
         }
       });
     }

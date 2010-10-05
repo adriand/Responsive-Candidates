@@ -16,26 +16,49 @@
       <div id='content'>
         
         <p>
+          Every candidate for election promises to be responsive and accountable to the citizens whose votes 
+          they ask for.  We're putting that commitment to the test by asking candidates a series of 
+          <a href="http://elections.raisethehammer.org/election/1#questions">questions</a>
+          about their campaigns, their priorities and what they believe is best for Hamilton.  Here's how
+          they stack up against each other in terms of how responsive they've been to these important questions.
+        </p>
+        
+        <p>
           Discuss this on Raise the Hammer: 
         </p>
         
-        <h3>Total Number of Questions: <span id="question_count"></span></h3>
+        <div id="data">
+        
+          <h3>Total Number of Questions: <span id="question_count"></span></h3>
 
-        <h3>Most Responsive Candidates By Ward</h3>
-        <table class="extreme" id="most_responsive">
-          <tr><th>Ward</th><td class="main"><strong>Candidate(s)</strong></td><td><strong>Responses</strong></td></tr>
-        </table>
+          <h3>Most Responsive Candidates By Ward</h3>
+          <table class="extreme" id="most_responsive">
+            <tr><th><strong>Ward</strong></th><td class="main"><strong>Candidate(s)</strong></td><td><strong>Responses</strong></td></tr>
+          </table>
         
-        <h3>Least Responsive Candidates By Ward</h3>
-        <table class="extreme" id="least_responsive">
-          <tr><th>Ward</th><td class="main"><strong>Candidate(s)</strong></td><td><strong>Responses</strong></td></tr>
-        </table>        
+          <p><br /><small>* Robert Pasuta won by acclamation as the only candidate in Ward 14, thus, his responses are both most and least in his ward.</small></p>
         
-        <h3>Responses By Candidate</h3>
-        <table id="candidates">
-          <tr><th style="width: 150px;">Candidate</th><td style="width: 100px;"><strong>Ward</strong></td><td style="width: 500px;"><strong>Responses</strong></td></tr>
-        </table>
+          <h3>Least Responsive Candidates By Ward</h3>
+          <table class="extreme" id="least_responsive">
+            <tr><th><strong>Ward</strong></th><td class="main"><strong>Candidate(s)</strong></td><td><strong>Responses</strong></td></tr>
+          </table>
+          
+          <p><br /><small>* Robert Pasuta won by acclamation as the only candidate in Ward 14, thus, his responses are both most and least in his ward.</small></p>
         
+          <h3>Level of Responsiveness By Ward</h3>
+          <p>The average number of responses per candidate in each ward.</p>
+          <table class="extreme" id="ward_responsiveness" style="width: 40%;">
+            <tr><th><strong>Ward</strong></th><td><strong>Average Responses Per Candidate</strong></td></tr>
+          </table>
+        
+          <h3>Number of Responses By Candidate</h3>
+          <table id="candidates">
+            <tr><th style="width: 150px;">Candidate</th><td style="width: 100px;"><strong>Ward</strong></td><td style="width: 500px;"><strong>Responses</strong></td></tr>
+          </table>
+        
+        </div>
+        
+        <div id="loading"><img src="public/loading.gif" /><br />Generating responsiveness index...</div>
         
         <p style="margin-top: 50px;">
           This project utilizes the excellent resources and API of the <a href="http://elections.raisethehammer.org/">Raise the Hammer Elections website</a>.
@@ -46,7 +69,7 @@
       
       <div id='footer'> 
         <p>
-          Copyright &copy; 2010 Raise the Hammer.
+          Copyright &copy; 2010 Raise the Hammer.  Created by Adrian Duyzer.
         </p> 
       </div>
     </div>
