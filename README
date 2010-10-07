@@ -1,4 +1,4 @@
-This is another very simple demonstration of how to access the Raise the Hammer Elections API (http://elections.raisethehammer.org/apidoc).
+This is another, more complex demonstration of how to access the Raise the Hammer Elections API (http://elections.raisethehammer.org/apidoc).
 
 The three most important files are:
 
@@ -7,6 +7,16 @@ api.php: this allows us to bypass Javascript's cross-domain request policy by do
 index.htm: the page where things are displayed.
 
 public/application.js: this is where all of the interesting stuff happens and where the work gets done.
+
+Why PHP and Javascript?
+-----------------------
+
+My first choice for web development would normally be Ruby, but I wanted this to be accessible to lots of people, so I chose PHP as the server-side language instead.  However, although everything in this project could have been accomplished with just PHP (or any server-side language), I don't like using PHP much any more, so I did as much as possible in Javascript.
+
+Setup
+-----
+
+If you want to get this running, just copy the secret_key.php.template file to one called just secret_key.php.  Edit it to put in your own key.  That's it, although in a production environment you're going to want to ensure you have the right permission on /cache, which ought to be readable and writable by the user that PHP runs as.
 
 License
 -------
