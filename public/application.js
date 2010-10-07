@@ -60,11 +60,31 @@ function getResponsiveCandidatesForWard(all_candidates, ward, most) {
   return [extreme_responses, extreme_candidates];
 }
 
+function lexicalComparison(a, b) {
+  if (a <= b) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
 function displayResponsesByCandidate(question_count, candidates) {
   $("#question_count").html(question_count);
 
   candidates.sort( function(a, b) {
-    return b.responses - a.responses;
+    // order the results by responsiveness, then ward, then candidate name
+    if (a.responses == b.responses) {
+      if (a.ward == b.ward) {
+        // sort by name
+        return lexicalComparison(niceName(a.name), niceName(b.name));
+      } else {
+        // sort by ward
+        return lexicalComparison(a.ward, b.ward);
+      }
+    } else {
+      // sort by responsiveness
+      return b.responses - a.responses;
+    }
   });
   
   for (var j = 0; j < candidates.length; j++) {
